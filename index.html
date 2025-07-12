@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
     
 </head>
-<body>
+<body onload="init()">
     <h1>Pokémon Liste</h1>
     <div id="pokemon-container" class="pokemon-container"></div>
-    <link rel="stylesheet" href="./style.css">
+
+    <dialog id="pokemon-dialog">
+    <div id="dialog-content"></div>
+    </dialog>
+   
 </body>
 </html>
