@@ -11,18 +11,21 @@ async function loadPokemons() {
     const details = await detailsResponse.json();
     const primaryType = details.types[0].type.name;
 
+    // 💡 Bild-URL priorisieren (dream_world > official-artwork > front_default)
+    const imgUrl =
+      details.sprites.other?.["official-artwork"]?.front_default ||
+      details.sprites.front_default;
+
     let typeIcons = "";
     for (const type of details.types) {
       const typeName = type.type.name;
       typeIcons += `<img class="type-icon" src="icons/${typeName}.svg" alt="${typeName}">`;
     }
+
     container.innerHTML += `
       <div class="pokemon-card ${primaryType}">
         <h3>#${details.id} ${details.name}</h3>
-        <img 
-        src="${details.sprites.front_default}" 
-        alt="${details.name}" 
-        onclick='openDialog(${JSON.stringify(details)})'>
+        <img src="${imgUrl}" class="dialog-foto" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'>
         <div class="type-icon-container">
           ${typeIcons}
         </div>
@@ -30,6 +33,7 @@ async function loadPokemons() {
     `;
   }
 }
+
 function openDialog(details) {
   const dialog = document.getElementById("pokemon-dialog");
   const content = document.getElementById("dialog-content");
@@ -47,7 +51,7 @@ function openDialog(details) {
 
   content.innerHTML = `
     <h2>#${id} ${name}</h2>
-    <img src="${image}" alt="${name}" style="width:120px; display:block; margin-bottom: 10px;">
+    <img class="dialog-foto" src="${image}" alt="${name}">
 
     <div>
       <button onclick="showTab('info')">Info</button>
