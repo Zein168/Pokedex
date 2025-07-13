@@ -10,11 +10,7 @@ async function loadPokemons() {
     const detailsResponse = await fetch(item.url);
     const details = await detailsResponse.json();
     const primaryType = details.types[0].type.name;
-
-    // 💡 Bild-URL priorisieren (dream_world > official-artwork > front_default)
-    const imgUrl =
-      details.sprites.other?.["official-artwork"]?.front_default ||
-      details.sprites.front_default;
+    const imgUrl = details.sprites.other["official-artwork"].front_default;
 
     let typeIcons = "";
     for (const type of details.types) {
@@ -40,18 +36,18 @@ function openDialog(details) {
 
   const name = details.name;
   const id = details.id;
-  const image = details.sprites.front_default;
+  const image = details.sprites.other?.["official-artwork"]?.front_default;
 
 
   const types = details.types.map(t => t.type.name).join(", ");
   const height = details.height;
   const weight = details.weight;
-  const abilities = details.abilities.map(a => a.ability.name).join(", ");
+  const abilities = details.abilities.map(a => `<li>${a.ability.name}</li>`).join("");
   const stats = details.stats.map(s => `<li>${s.stat.name}: ${s.base_stat}</li>`).join("");
 
   content.innerHTML = `
     <h2>#${id} ${name}</h2>
-    <img class="dialog-foto" src="${image}" alt="${name}">
+    <div><img class="dialog-foto" src="${image}" alt="${name}"></div>
 
     <div>
       <button onclick="showTab('info')">Info</button>
@@ -67,12 +63,12 @@ function openDialog(details) {
 
     <div id="tab-abilities" class="tab-content" style="display:none;">
       <p><strong>Abilities:</strong></p>
-      <p>${abilities}</p>
+      <ul class="stats-ul" >${abilities}</ul>
     </div>
 
     <div id="tab-stats" class="tab-content" style="display:none;">
       <p><strong>Base Stats:</strong></p>
-      <ul>${stats}</ul>
+      <ul class="stats-ul">${stats}</ul>
     </div>
   `;
 
