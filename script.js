@@ -44,11 +44,12 @@ function openDialog(details) {
   const weight = details.weight;
   const abilities = details.abilities.map(a => `<li>${a.ability.name}</li>`).join("");
   const stats = details.stats.map(s => `<li>${s.stat.name}: ${s.base_stat}</li>`).join("");
+  const primaryType = details.types[0].type.name;
 
-  content.innerHTML = `
+  content.innerHTML = `<div class="pokemon-card ${primaryType}">
     <h2>#${id} ${name}</h2>
     <div><img class="dialog-foto" src="${image}" alt="${name}"></div>
-
+    </div>
     <div>
       <button onclick="showTab('info')">Info</button>
       <button onclick="showTab('abilities')">Abilities</button>
