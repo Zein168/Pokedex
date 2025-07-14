@@ -15,19 +15,18 @@ async function loadPokemons() {
     let typeIcons = "";
     for (const type of details.types) {
       const typeName = type.type.name;
-      typeIcons += `<img class="type-icon" src="icons/${typeName}.svg" alt="${typeName}">`;
+      typeIcons += `<div class="type-icon ${typeName}"></div>`;
     }
 
-    container.innerHTML += `
-      <div class="pokemon-card ${primaryType}">
+    container.innerHTML += `<div class="pokemon-card ${primaryType}">
         <h3>#${details.id} ${details.name}</h3>
-        <img src="${imgUrl}" class="dialog-foto" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'>
+        <img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'>
+
         <div class="type-icon-container">
           ${typeIcons}
         </div>
-      </div>
-    `;
-  }
+        </div>`;
+    }
 }
 
 function openDialog(details) {
@@ -48,7 +47,7 @@ function openDialog(details) {
 
   content.innerHTML = `<div class="pokemon-card ${primaryType}">
     <h2>#${id} ${name}</h2>
-    <div><img class="dialog-foto" src="${image}" alt="${name}"></div>
+    <div><img class="dialog-foto ${primaryType}" src="${image}" alt="${name}"></div>
     </div>
     <div>
       <button onclick="showTab('info')">Info</button>
