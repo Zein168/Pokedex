@@ -1,7 +1,6 @@
 .pokemon-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 10px;
     text-align: center;
     width: 170px;
     margin: 10px;
@@ -93,12 +92,12 @@ button:focus {
 }
 
 .dialog-foto {
-  width: 160px;
-  height: 160px;
-  object-fit: contain;
-  background-color: transparent; 
-  display: block;
-  margin: auto;
+    width: 170px;
+    height: 160px;
+    object-fit: contain;
+    background-color: transparent;
+    display: block;
+  
 }
 
 #dialog-content {

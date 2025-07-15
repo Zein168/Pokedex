@@ -20,7 +20,7 @@ async function loadPokemons() {
 
     container.innerHTML += `<div class="pokemon-card ${primaryType}">
         <h3>#${details.id} ${details.name}</h3>
-        <img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'>
+        <div><img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'></div>
 
         <div class="type-icon-container">
           ${typeIcons}
@@ -56,9 +56,9 @@ function openDialog(details) {
 
   content.innerHTML = `
     <div class="pokemon-card ${primaryType}">
-      <h2>#${id} ${name}</h2>
+      <h2>#${id} ${name}</h2></div>
       <div><img class="dialog-foto ${primaryType}" src="${image}" alt="${name}"></div>
-    </div>
+    
     <div>
       <button onclick="showTab('info')">Info</button>
       <button onclick="showTab('abilities')">Abilities</button>
