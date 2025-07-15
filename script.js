@@ -37,17 +37,27 @@ function openDialog(details) {
   const id = details.id;
   const image = details.sprites.other?.["official-artwork"]?.front_default;
 
-
   const types = details.types.map(t => t.type.name).join(", ");
   const height = details.height;
   const weight = details.weight;
   const abilities = details.abilities.map(a => `<li>${a.ability.name}</li>`).join("");
-  const stats = details.stats.map(s => `<li>${s.stat.name}: ${s.base_stat}</li>`).join("");
   const primaryType = details.types[0].type.name;
 
-  content.innerHTML = `<div class="pokemon-card ${primaryType}">
-    <h2>#${id} ${name}</h2>
-    <div><img class="dialog-foto ${primaryType}" src="${image}" alt="${name}"></div>
+  const stats = details.stats.map(s => `
+    <li class="stat-item">
+      <span class="stat-name">${s.stat.name}</span>
+      <div class="stat-bar">
+        <div class="stat-fill" style="width: ${Math.min(s.base_stat, 100)}%;"></div>
+      </div>
+      <span class="stat-value">${s.base_stat}</span>
+    </li>
+  `).join("");
+
+
+  content.innerHTML = `
+    <div class="pokemon-card ${primaryType}">
+      <h2>#${id} ${name}</h2>
+      <div><img class="dialog-foto ${primaryType}" src="${image}" alt="${name}"></div>
     </div>
     <div>
       <button onclick="showTab('info')">Info</button>
@@ -63,12 +73,14 @@ function openDialog(details) {
 
     <div id="tab-abilities" class="tab-content" style="display:none;">
       <p><strong>Abilities:</strong></p>
-      <ul class="stats-ul" >${abilities}</ul>
+      <ul class="stats-ul">${abilities}</ul>
     </div>
 
     <div id="tab-stats" class="tab-content" style="display:none;">
       <p><strong>Base Stats:</strong></p>
-      <ul class="stats-ul">${stats}</ul>
+      <ul class="stats-ul">
+        ${stats} 
+      </ul>
     </div>
   `;
 

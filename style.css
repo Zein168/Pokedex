@@ -96,7 +96,7 @@ button:focus {
   width: 160px;
   height: 160px;
   object-fit: contain;
-  background-color: transparent; /* Default */
+  background-color: transparent; 
   display: block;
   margin: auto;
 }
@@ -121,3 +121,34 @@ button:focus {
     text-align: left;
 }
 
+/* progress-bar */
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.stat-name {
+  width: 80px;
+  text-transform: capitalize;
+}
+
+.stat-bar {
+  background-color: #eee;
+  flex-grow: 1;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  background: linear-gradient(90deg, #ea3434, #b44141);
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.stat-value {
+  width: 30px;
+  text-align: right;
+}
