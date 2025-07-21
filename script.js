@@ -19,7 +19,7 @@ async function loadPokemons() {
     }
 
     container.innerHTML += `<div class="pokemon-card ${primaryType}">
-        <h3>#${details.id} ${details.name}</h3>
+        <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
         <div><img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'></div>
 
         <div class="type-icon-container">
@@ -55,15 +55,18 @@ function openDialog(details) {
 
 
   content.innerHTML = `
-    <div class="pokemon-card ${primaryType}">
-      <h2>#${id} ${name}</h2></div>
-      <div><img class="dialog-foto ${primaryType}" src="${image}" alt="${name}"></div>
-    
-    <div>
-      <button onclick="showTab('info')">Info</button>
-      <button onclick="showTab('abilities')">Abilities</button>
-      <button onclick="showTab('stats')">Stats</button>
+    <div class=" card-update ">
+      <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
+      <div><img class="dialog-foto ${primaryType} foto-update " src="${image}" alt="${name}"></div>
     </div>
+    <div class="information">
+    <div>
+        <button class="tab-btn active" onclick="showTab('info', this)">Info</button>
+        <button class="tab-btn" onclick="showTab('abilities', this)">Abilities</button>
+        <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
+    </div>
+    </div>
+
 
     <div id="tab-info" class="tab-content">
       <p><strong>Type:</strong> ${types}</p>
@@ -87,14 +90,19 @@ function openDialog(details) {
   dialog.showModal();
 }
 
-function showTab(tabName) {
-  const tabs = document.querySelectorAll(".tab-content");
-  tabs.forEach(tab => tab.style.display = "none");
+function showTab(tabName, button) {
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.style.display = "none";
+  });
 
   const activeTab = document.getElementById(`tab-${tabName}`);
   if (activeTab) activeTab.style.display = "block";
-}
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
+  button.classList.add("active");
+}
 function setupDialogClose() {
   const dialog = document.getElementById("pokemon-dialog");
   const content = document.getElementById("dialog-content");

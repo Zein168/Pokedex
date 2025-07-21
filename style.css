@@ -6,6 +6,7 @@
     margin: 10px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     cursor: pointer;
+    background-color: #7f4a4a;
 }
 .pokemon-container {
     display: flex;
@@ -70,10 +71,12 @@
 
 dialog {
   border: none;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 0px;
   text-align: center;
   height: 400px;
+  overflow: visible;
+  
   /* position: fixed;
   top: 50%;
   left: 50%;
@@ -82,7 +85,7 @@ dialog {
 
 
 button {
-  margin-right: 5px;
+  margin: -2px;
   padding: 5px 10px;
   cursor: pointer;
 }
@@ -100,18 +103,23 @@ button:focus {
   
 }
 
+
 #dialog-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #7f4a4a;
+    border-radius: 20px
 }
 
 .tab-content {
     flex: 1;
     overflow-y: auto;
-    margin-top: 10px;
     text-align: left;
+    background-color: #2789ad;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 
 }
 
@@ -151,3 +159,30 @@ button:focus {
   width: 30px;
   text-align: right;
 }
+
+.card-update{
+    margin: 0;
+    width: 300px;
+    border: none;
+}
+
+.foto-update{
+    width: 300px;
+}
+.information{
+    margin-top: 16px;
+    background-color: black;
+ }
+
+.tab-btn {
+ 
+  border: none;
+  background: #ddd;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: #4CAF50;  
+  color: white;
+} 
