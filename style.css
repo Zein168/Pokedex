@@ -4,94 +4,250 @@
     text-align: center;
     width: 170px;
     margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     background-color: #7f4a4a;
 }
+
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
 }
 
 
-.normal.type-icon  { background-color: #A8A878; color: white;  background-image: url('icons/normal.svg'); }
-.fire.type-icon    { background-color: #F08030; color: white;  background-image: url('icons/fire.svg'); }
-.water.type-icon   { background-color: #6890F0; color: white; background-image: url('icons/water.svg'); }
-.electric.type-icon{ background-color: #F8D030; color: black;background-image: url('icons/fire.svg'); }
-.grass.type-icon   { background-color: #78C850; color: white; background-image: url('icons/fire.svg');}
-.ice.type-icon     { background-color: #98D8D8; color: black; background-image: url('icons/fire.svg');}
-.fighting.type-icon{ background-color: #C03028; color: white; background-image: url('icons/fighting.svg');}
-.poison.type-icon  { background-color: #A040A0; color: white; background-image: url('icons/poison.svg');}
-.ground.type-icon  { background-color: #E0C068; color: black; background-image: url('icons/ground.svg');}
-.flying.type-icon  { background-color: #A890F0; color: white; background-image: url('icons/flying.svg');}
-.psychic.type-icon { background-color: #F85888; color: white; background-image: url('icons/psychic.svg');}
-.bug.type-icon     { background-color: #A8B820; color: white; background-image: url('icons/bug.svg');}
-.rock.type-icon    { background-color: #B8A038; color: white; background-image: url('icons/rock.svg');}
-.ghost.type-icon   { background-color: #705898; color: white; background-image: url('icons/ghost.svg');}
-.dragon.type-icon  { background-color: #7038F8; color: white; background-image: url('icons/dragon.svg');}
-.dark.type-icon    { background-color: #705848; color: white; background-image: url('icons/dark.svg');}
-.steel.type-icon   { background-color: #B8B8D0; color: black; background-image: url('icons/steel.svg');}
-.fairy.type-icon   { background-color: #EE99AC; color: black; background-image: url('icons/fairy.svg');}    
+.normal.type-icon {
+    background-color: #A8A878;
+    color: white;
+    background-image: url('icons/normal.svg');
+}
 
-.normal.dialog-foto  { background-color: #A8A878; color: white; }
-.fire.dialog-foto    { background-color: #F08030; color: white; }
-.water.dialog-foto   { background-color: #6890F0; color: white; }
-.electric.dialog-foto{ background-color: #F8D030; color: black; }
-.grass.dialog-foto   { background-color: #78C850; color: white; }
-.ice.dialog-foto     { background-color: #98D8D8; color: black; }
-.fighting.dialog-foto{ background-color: #C03028; color: white; }
-.poison.dialog-foto  { background-color: #A040A0; color: white; }
-.ground.dialog-foto  { background-color: #E0C068; color: black; }
-.flying.dialog-foto  { background-color: #A890F0; color: white; }
-.psychic.dialog-foto { background-color: #F85888; color: white; }
-.bug.dialog-foto     { background-color: #A8B820; color: white; }
-.rock.dialog-foto    { background-color: #B8A038; color: white; }
-.ghost.dialog-foto   { background-color: #705898; color: white; }
-.dragon.dialog-foto  { background-color: #7038F8; color: white; }
-.dark.dialog-foto    { background-color: #705848; color: white; }
-.steel.dialog-foto   { background-color: #B8B8D0; color: black; }
-.fairy.dialog-foto   { background-color: #EE99AC; color: black; }
+.fire.type-icon {
+    background-color: #F08030;
+    color: white;
+    background-image: url('icons/fire.svg');
+}
+
+.water.type-icon {
+    background-color: #6890F0;
+    color: white;
+    background-image: url('icons/water.svg');
+}
+
+.electric.type-icon {
+    background-color: #F8D030;
+    color: black;
+    background-image: url('icons/fire.svg');
+}
+
+.grass.type-icon {
+    background-color: #78C850;
+    color: white;
+    background-image: url('icons/fire.svg');
+}
+
+.ice.type-icon {
+    background-color: #98D8D8;
+    color: black;
+    background-image: url('icons/fire.svg');
+}
+
+.fighting.type-icon {
+    background-color: #C03028;
+    color: white;
+    background-image: url('icons/fighting.svg');
+}
+
+.poison.type-icon {
+    background-color: #A040A0;
+    color: white;
+    background-image: url('icons/poison.svg');
+}
+
+.ground.type-icon {
+    background-color: #E0C068;
+    color: black;
+    background-image: url('icons/ground.svg');
+}
+
+.flying.type-icon {
+    background-color: #A890F0;
+    color: white;
+    background-image: url('icons/flying.svg');
+}
+
+.psychic.type-icon {
+    background-color: #F85888;
+    color: white;
+    background-image: url('icons/psychic.svg');
+}
+
+.bug.type-icon {
+    background-color: #A8B820;
+    color: white;
+    background-image: url('icons/bug.svg');
+}
+
+.rock.type-icon {
+    background-color: #B8A038;
+    color: white;
+    background-image: url('icons/rock.svg');
+}
+
+.ghost.type-icon {
+    background-color: #705898;
+    color: white;
+    background-image: url('icons/ghost.svg');
+}
+
+.dragon.type-icon {
+    background-color: #7038F8;
+    color: white;
+    background-image: url('icons/dragon.svg');
+}
+
+.dark.type-icon {
+    background-color: #705848;
+    color: white;
+    background-image: url('icons/dark.svg');
+}
+
+.steel.type-icon {
+    background-color: #B8B8D0;
+    color: black;
+    background-image: url('icons/steel.svg');
+}
+
+.fairy.type-icon {
+    background-color: #EE99AC;
+    color: black;
+    background-image: url('icons/fairy.svg');
+}
+
+.normal.dialog-foto {
+    background-color: #A8A878;
+    color: white;
+}
+
+.fire.dialog-foto {
+    background-color: #F08030;
+    color: white;
+}
+
+.water.dialog-foto {
+    background-color: #6890F0;
+    color: white;
+}
+
+.electric.dialog-foto {
+    background-color: #F8D030;
+    color: black;
+}
+
+.grass.dialog-foto {
+    background-color: #78C850;
+    color: white;
+}
+
+.ice.dialog-foto {
+    background-color: #98D8D8;
+    color: black;
+}
+
+.fighting.dialog-foto {
+    background-color: #C03028;
+    color: white;
+}
+
+.poison.dialog-foto {
+    background-color: #A040A0;
+    color: white;
+}
+
+.ground.dialog-foto {
+    background-color: #E0C068;
+    color: black;
+}
+
+.flying.dialog-foto {
+    background-color: #A890F0;
+    color: white;
+}
+
+.psychic.dialog-foto {
+    background-color: #F85888;
+    color: white;
+}
+
+.bug.dialog-foto {
+    background-color: #A8B820;
+    color: white;
+}
+
+.rock.dialog-foto {
+    background-color: #B8A038;
+    color: white;
+}
+
+.ghost.dialog-foto {
+    background-color: #705898;
+    color: white;
+}
+
+.dragon.dialog-foto {
+    background-color: #7038F8;
+    color: white;
+}
+
+.dark.dialog-foto {
+    background-color: #705848;
+    color: white;
+}
+
+.steel.dialog-foto {
+    background-color: #B8B8D0;
+    color: black;
+}
+
+.fairy.dialog-foto {
+    background-color: #EE99AC;
+    color: black;
+}
 
 
 .type-icon {
-  width: 22px;
-  height: 22px;
-  margin: 4px;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50px;
+    width: 22px;
+    height: 22px;
+    margin: 4px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
 }
+
 .type-icon-container {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 
 
 dialog {
-  border: none;
-  border-radius: 20px;
-  padding: 0px;
-  text-align: center;
-  height: 400px;
-  overflow: visible;
-  
-  /* position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+    border: none;
+    border-radius: 20px;
+    padding: 0px;
+    text-align: center;
+    height: 400px;
+    overflow: visible;
 }
 
 
 button {
-  margin: -2px;
-  padding: 5px 10px;
-  cursor: pointer;
+    margin: -2px;
+    cursor: pointer;
 }
 
 button:focus {
-  outline: 2px solid #333;
+    outline: 2px solid #333;
 }
 
 .dialog-foto {
@@ -100,7 +256,7 @@ button:focus {
     object-fit: contain;
     background-color: transparent;
     display: block;
-  
+
 }
 
 
@@ -123,66 +279,87 @@ button:focus {
 
 }
 
-.stats-ul{
+.stats-ul {
     padding-inline-start: 20px;
     text-align: left;
 }
 
 /* progress-bar */
 .stat-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
 }
 
 .stat-name {
-  width: 80px;
-  text-transform: capitalize;
+    width: 80px;
+    text-transform: capitalize;
 }
 
 .stat-bar {
-  background-color: #eee;
-  flex-grow: 1;
-  height: 12px;
-  border-radius: 6px;
-  overflow: hidden;
+    background-color: #eee;
+    flex-grow: 1;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .stat-fill {
-  background: linear-gradient(90deg, #ea3434, #b44141);
-  height: 100%;
-  transition: width 0.3s ease-in-out;
+    background: linear-gradient(90deg, #ea3434, #b44141);
+    height: 100%;
+    transition: width 0.3s ease-in-out;
 }
 
 .stat-value {
-  width: 30px;
-  text-align: right;
+    width: 30px;
+    text-align: right;
 }
 
-.card-update{
+.card-update {
     margin: 0;
     width: 300px;
     border: none;
 }
 
-.foto-update{
+.foto-update {
     width: 300px;
 }
-.information{
+
+.information {
     margin-top: 16px;
-    background-color: black;
- }
+    background-color: #689cbf;
+}
 
 .tab-btn {
- 
-  border: none;
-  background: #ddd;
-  cursor: pointer;
-  transition: 0.3s;
+    flex: 1;
+    border: none;  
+    border-bottom: 3px solid transparent;
+    
+    background: none;
+    cursor: pointer;
+    transition: 0.3s;
+    outline: none;
+    
 }
 
 .tab-btn.active {
-  background: #4CAF50;  
-  color: white;
-} 
+    color: white;
+    border-bottom-color: red; 
+   
+}
+.tab-btn:focus {
+  outline: none;       
+  box-shadow: none;    
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.border {
+    background: #000;
+    width: 1px;
+    height: 20px;
+}

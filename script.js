@@ -30,6 +30,11 @@ async function loadPokemons() {
 }
 
 function openDialog(details) {
+    let typeIcons = "";
+    for (const type of details.types) {
+      const typeName = type.type.name;
+      typeIcons += `<div class="type-icon ${typeName}"></div>`;
+    }
   const dialog = document.getElementById("pokemon-dialog");
   const content = document.getElementById("dialog-content");
 
@@ -59,12 +64,17 @@ function openDialog(details) {
       <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
       <div><img class="dialog-foto ${primaryType} foto-update " src="${image}" alt="${name}"></div>
     </div>
+      <div class="type-icon-container">
+          ${typeIcons}
+        </div> 
     <div class="information">
-    <div>
-        <button class="tab-btn active" onclick="showTab('info', this)">Info</button>
-        <button class="tab-btn" onclick="showTab('abilities', this)">Abilities</button>
-        <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
-    </div>
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('info', this)">Info</button>
+            <div class="border"></div>
+            <button class="tab-btn" onclick="showTab('abilities', this)">Abilities</button>
+            <div class="border"></div>
+            <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
+        </div>
     </div>
 
 
