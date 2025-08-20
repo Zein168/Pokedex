@@ -1,3 +1,10 @@
+body{
+    font-family: sans-serif;
+}
+strong{
+   font-size: 14px;
+}
+
 .pokemon-card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -8,6 +15,8 @@
     cursor: pointer;
     background-color: #7f4a4a;
 }
+
+
 
 .pokemon-container {
     display: flex;
@@ -271,17 +280,21 @@ button:focus {
 
 .tab-content {
     flex: 1;
-    overflow-y: auto;
     text-align: left;
+    min-height: 200px; 
     background-color: #2789ad;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    font-size: 14px;                
+    line-height: 1.5;  
+    
 
 }
 
 .stats-ul {
     padding-inline-start: 20px;
     text-align: left;
+    margin-block-start: 0;
 }
 
 /* progress-bar */
@@ -293,8 +306,9 @@ button:focus {
 }
 
 .stat-name {
-    width: 80px;
+    width: 120px;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 
 .stat-bar {
@@ -303,6 +317,7 @@ button:focus {
     height: 12px;
     border-radius: 6px;
     overflow: hidden;
+    margin-right: 16px;
 }
 
 .stat-fill {
@@ -311,10 +326,7 @@ button:focus {
     transition: width 0.3s ease-in-out;
 }
 
-.stat-value {
-    width: 30px;
-    text-align: right;
-}
+
 
 .card-update {
     margin: 0;
@@ -327,7 +339,6 @@ button:focus {
 }
 
 .information {
-    margin-top: 16px;
     background-color: #689cbf;
 }
 
@@ -335,11 +346,11 @@ button:focus {
     flex: 1;
     border: none;  
     border-bottom: 3px solid transparent;
-    
     background: none;
     cursor: pointer;
     transition: 0.3s;
     outline: none;
+    font-weight: bold;
     
 }
 
@@ -362,4 +373,43 @@ button:focus {
     background: #000;
     width: 1px;
     height: 20px;
+}
+
+#tab-main p{
+    display: flex;             
+    justify-content: space-between;
+    margin: 5px 0;
+
+    
+}
+
+.label {
+  display: inline-block;
+  width: 118px;
+  font-weight: bold;
+  padding-left: 20px;
+  font-size: 12px; 
+}
+
+.value {
+  flex: 1; 
+}
+
+/* evo-chain */
+#evo-chain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.evo-image {
+  width: 70px;
+  height: auto;
+}
+
+.evo-arrow {
+  font-size: 24px;
+  color: white;
 }

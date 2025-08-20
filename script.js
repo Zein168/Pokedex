@@ -26,26 +26,28 @@ async function loadPokemons() {
           ${typeIcons}
         </div>
         </div>`;
-    }
+  }
 }
 
 function openDialog(details) {
-    let typeIcons = "";
-    for (const type of details.types) {
-      const typeName = type.type.name;
-      typeIcons += `<div class="type-icon ${typeName}"></div>`;
-    }
+  let typeIcons = "";
+  for (const type of details.types) {
+    const typeName = type.type.name;
+    typeIcons += `<div class="type-icon ${typeName}"></div>`;
+  }
   const dialog = document.getElementById("pokemon-dialog");
   const content = document.getElementById("dialog-content");
 
   const name = details.name;
   const id = details.id;
   const image = details.sprites.other?.["official-artwork"]?.front_default;
+  const baseExperience = details.base_experience;
 
   const types = details.types.map(t => t.type.name).join(", ");
   const height = details.height;
   const weight = details.weight;
-  const abilities = details.abilities.map(a => `<li>${a.ability.name}</li>`).join("");
+   
+  const abilities = details.abilities.map(a => a.ability.name).join(", ");
   const primaryType = details.types[0].type.name;
 
   const stats = details.stats.map(s => `
@@ -54,7 +56,7 @@ function openDialog(details) {
       <div class="stat-bar">
         <div class="stat-fill" style="width: ${Math.min(s.base_stat, 100)}%;"></div>
       </div>
-      <span class="stat-value">${s.base_stat}</span>
+      
     </li>
   `).join("");
 
@@ -69,35 +71,41 @@ function openDialog(details) {
         </div> 
     <div class="information">
         <div class="tab-buttons">
-            <button class="tab-btn active" onclick="showTab('info', this)">Info</button>
+            <button class="tab-btn active" onclick="showTab('main', this)">main</button>
             <div class="border"></div>
-            <button class="tab-btn" onclick="showTab('abilities', this)">Abilities</button>
+             <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
             <div class="border"></div>
-            <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
+           
+            <button class="tab-btn" onclick="showTab('evo', this)">evo-chain</button>
         </div>
     </div>
 
 
-    <div id="tab-info" class="tab-content">
-      <p><strong>Type:</strong> ${types}</p>
-      <p><strong>Height:</strong> ${height}</p>
-      <p><strong>Weight:</strong> ${weight}</p>
+
+    <div id="tab-main" class="tab-content">
+      <p><span class="label">Height</span> <span class="value">:${height}m</span></p>
+      <p><span class="label">Weight</span> <span class="value">:${weight}kg</span></p>
+      <p><span class="label">Base experience</span> <span class="value">:${baseExperience}</span></p>
+      <p><span class="label">Abilities</span> <span class="value">:${abilities}</span></p>
     </div>
 
-    <div id="tab-abilities" class="tab-content" style="display:none;">
-      <p><strong>Abilities:</strong></p>
-      <ul class="stats-ul">${abilities}</ul>
-    </div>
+
 
     <div id="tab-stats" class="tab-content" style="display:none;">
-      <p><strong>Base Stats:</strong></p>
+     
       <ul class="stats-ul">
         ${stats} 
       </ul>
     </div>
-  `;
+
+      <div id="tab-evo" class="tab-content" style="display:none;">
+        <div id="evo-chain"></div>
+      </div>
+    `;
 
   dialog.showModal();
+  loadEvolutionChain(details);
+
 }
 
 function showTab(tabName, button) {
@@ -124,9 +132,53 @@ function setupDialogClose() {
   });
 }
 
+async function loadEvolutionChain(details) {
+  try {
+    const speciesRes = await fetch(details.species.url);
+    const speciesData = await speciesRes.json();
+
+    const evoRes = await fetch(speciesData.evolution_chain.url);
+    const evoData = await evoRes.json();
+
+    const evoChain = [];
+    let evo = evoData.chain;
+
+    while (evo) {
+      evoChain.push(evo.species.name);
+      evo = evo.evolves_to[0];
+    }
+
+    const evoContainer = document.getElementById("evo-chain");
+    evoContainer.innerHTML = ""; 
+
+    for (const name of evoChain) {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const data = await res.json();
+      const image = data.sprites.other["official-artwork"].front_default;
+
+      const img = document.createElement("img");
+      img.src = image;
+      img.alt = name;
+      img.classList.add("evo-image");
+
+      evoContainer.appendChild(img);
+
+     
+      if (name !== evoChain[evoChain.length - 1]) {
+        const arrow = document.createElement("span");
+        arrow.textContent = "→";
+        arrow.classList.add("evo-arrow");
+        evoContainer.appendChild(arrow);
+      }
+    }
+  } catch (error) {
+    console.error("Fehler beim Laden der Evolution Chain:", error);
+    document.getElementById("evo-chain").textContent = "Unavailable";
+  }
+}
 
 
 function init() {
   loadPokemons();
-  setupDialogClose() 
+  setupDialogClose()
 }
