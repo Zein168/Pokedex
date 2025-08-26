@@ -73,7 +73,7 @@ function openDialog(details) {
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="showTab('main', this)">main</button>
             <div class="border"></div>
-             <button class="tab-btn" onclick="showTab('stats', this)">Stats</button>
+             <button class="tab-btn" onclick="showTab('stats', this)">stats</button>
             <div class="border"></div>
            
             <button class="tab-btn" onclick="showTab('evo', this)">evo-chain</button>

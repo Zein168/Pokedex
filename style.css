@@ -1,19 +1,35 @@
 body{
     font-family: sans-serif;
+    background-color: #2E6375;
+    
+   
 }
 strong{
    font-size: 14px;
 }
+h3{
+    color: white;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+
 
 .pokemon-card {
-    border: 1px solid #ddd;
     border-radius: 8px;
     text-align: center;
     width: 170px;
     margin: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    background-color: #7f4a4a;
+    background-color: #244d69;
 }
 
 
@@ -232,13 +248,19 @@ strong{
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50px;
+    background-size: 72%;
 }
 
 .type-icon-container {
     margin-top: 10px;
 }
 
-
+.name-id{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 dialog {
     border: none;
@@ -274,7 +296,7 @@ button:focus {
     height: 400px;
     display: flex;
     flex-direction: column;
-    background-color: #7f4a4a;
+    background-color: #000000;
     border-radius: 20px
 }
 
@@ -282,7 +304,7 @@ button:focus {
     flex: 1;
     text-align: left;
     min-height: 200px; 
-    background-color: #2789ad;
+    background-color: #2E6375;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     font-size: 14px;                
@@ -339,26 +361,40 @@ button:focus {
 }
 
 .information {
-    background-color: #689cbf;
+    background-color: #244d69;
 }
 
 .tab-btn {
     flex: 1;
     border: none;  
-    border-bottom: 3px solid transparent;
     background: none;
     cursor: pointer;
     transition: 0.3s;
     outline: none;
     font-weight: bold;
+    position: relative;
     
 }
 
 .tab-btn.active {
     color: white;
-    border-bottom-color: red; 
+   
+   
    
 }
+
+.tab-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 97%; 
+    height: 3px;
+    background: red;
+    border-radius: 2px;
+}
+
 .tab-btn:focus {
   outline: none;       
   box-shadow: none;    
@@ -371,7 +407,7 @@ button:focus {
 
 .border {
     background: #000;
-    width: 1px;
+    width: 2px;
     height: 20px;
 }
 
@@ -413,3 +449,12 @@ button:focus {
   font-size: 24px;
   color: white;
 }
+
+
+header{
+    background-color: #244d69;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
