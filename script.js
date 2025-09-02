@@ -1,6 +1,6 @@
 async function loadPokemons() {
   const container = document.getElementById("pokemon-container");
-  const limit = 10;
+  const limit = 20;
   const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
 
   const response = await fetch(url);
@@ -182,3 +182,39 @@ function init() {
   loadPokemons();
   setupDialogClose()
 }
+
+let allPokemon = [];
+
+async function loadAllPokemon() {
+  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+  const data = await response.json();
+  allPokemon = data.results;
+}
+
+
+
+async function searchPokemon() {
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  const container = document.getElementById("pokemon-container");
+  container.innerHTML = "";
+
+  if (!query) return loadPokemons(); 
+  const filtered = allPokemon.filter(p => p.name.includes(query));
+
+  for (const item of filtered) {
+    const details = await (await fetch(item.url)).json();
+    const primaryType = details.types[0].type.name;
+    const imgUrl = details.sprites.other["official-artwork"].front_default;
+
+    const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
+
+    container.innerHTML += `
+      <div class="pokemon-card ${primaryType}">
+        <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
+        <div><img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'></div>
+        <div class="type-icon-container">${typeIcons}</div>
+      </div>`;
+  }
+}
+
+loadAllPokemon();
