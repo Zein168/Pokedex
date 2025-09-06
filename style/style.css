@@ -1,26 +1,6 @@
 body{
-    font-family: sans-serif;
     background-color: #2E6375;
-    
-   
 }
-strong{
-   font-size: 14px;
-}
-h3{
-    color: white;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-h1, h2, h3, p {
-  margin: 0;
-}
-
-
 
 .pokemon-card {
     border-radius: 8px;
@@ -41,202 +21,121 @@ h1, h2, h3, p {
 }
 
 
-.normal.type-icon {
-    background-color: #A8A878;
-    color: white;
-    background-image: url('icons/normal.svg');
-}
-
-.fire.type-icon {
-    background-color: #F08030;
-    color: white;
-    background-image: url('icons/fire.svg');
-}
-
-.water.type-icon {
-    background-color: #6890F0;
-    color: white;
-    background-image: url('icons/water.svg');
-}
-
-.electric.type-icon {
-    background-color: #F8D030;
-    color: black;
-    background-image: url('icons/fire.svg');
-}
-
-.grass.type-icon {
-    background-color: #78C850;
-    color: white;
-    background-image: url('icons/fire.svg');
-}
-
-.ice.type-icon {
-    background-color: #98D8D8;
-    color: black;
-    background-image: url('icons/fire.svg');
-}
-
-.fighting.type-icon {
-    background-color: #C03028;
-    color: white;
-    background-image: url('icons/fighting.svg');
-}
-
-.poison.type-icon {
-    background-color: #A040A0;
-    color: white;
-    background-image: url('icons/poison.svg');
-}
-
-.ground.type-icon {
-    background-color: #E0C068;
-    color: black;
-    background-image: url('icons/ground.svg');
-}
-
-.flying.type-icon {
-    background-color: #A890F0;
-    color: white;
-    background-image: url('icons/flying.svg');
-}
-
-.psychic.type-icon {
-    background-color: #F85888;
-    color: white;
-    background-image: url('icons/psychic.svg');
-}
-
-.bug.type-icon {
-    background-color: #A8B820;
-    color: white;
-    background-image: url('icons/bug.svg');
-}
-
-.rock.type-icon {
-    background-color: #B8A038;
-    color: white;
-    background-image: url('icons/rock.svg');
-}
-
-.ghost.type-icon {
-    background-color: #705898;
-    color: white;
-    background-image: url('icons/ghost.svg');
-}
-
-.dragon.type-icon {
-    background-color: #7038F8;
-    color: white;
-    background-image: url('icons/dragon.svg');
-}
-
-.dark.type-icon {
-    background-color: #705848;
-    color: white;
-    background-image: url('icons/dark.svg');
-}
-
-.steel.type-icon {
-    background-color: #B8B8D0;
-    color: black;
-    background-image: url('icons/steel.svg');
-}
-
-.fairy.type-icon {
-    background-color: #EE99AC;
-    color: black;
-    background-image: url('icons/fairy.svg');
-}
-
 .normal.dialog-foto {
     background-color: #A8A878;
     color: white;
+    width: 100%;
 }
 
 .fire.dialog-foto {
     background-color: #F08030;
     color: white;
+    width: 100%;
 }
 
 .water.dialog-foto {
     background-color: #6890F0;
     color: white;
+    width: 100%;
 }
 
 .electric.dialog-foto {
     background-color: #F8D030;
     color: black;
+    width: 100%;
 }
 
 .grass.dialog-foto {
     background-color: #78C850;
     color: white;
+    width: 100%;
 }
 
 .ice.dialog-foto {
     background-color: #98D8D8;
     color: black;
+    width: 100%;
+    
 }
 
 .fighting.dialog-foto {
     background-color: #C03028;
     color: white;
+    width: 100%;
+    
 }
 
 .poison.dialog-foto {
     background-color: #A040A0;
     color: white;
+    width: 100%;
+    
 }
 
 .ground.dialog-foto {
     background-color: #E0C068;
     color: black;
+    width: 100%;
+    
 }
 
 .flying.dialog-foto {
     background-color: #A890F0;
     color: white;
+    width: 100%;
+    
 }
 
 .psychic.dialog-foto {
     background-color: #F85888;
     color: white;
+    width: 100%;
+    
 }
 
 .bug.dialog-foto {
     background-color: #A8B820;
     color: white;
+    width: 100%;
+    
 }
 
 .rock.dialog-foto {
     background-color: #B8A038;
     color: white;
+    width: 100%;
 }
 
 .ghost.dialog-foto {
     background-color: #705898;
     color: white;
+    width: 100%;
 }
 
 .dragon.dialog-foto {
     background-color: #7038F8;
     color: white;
+    width: 100%;
+    
 }
 
 .dark.dialog-foto {
     background-color: #705848;
     color: white;
+    width: 100%;
 }
 
 .steel.dialog-foto {
     background-color: #B8B8D0;
     color: black;
+    width: 100%;
 }
 
 .fairy.dialog-foto {
     background-color: #EE99AC;
     color: black;
+    width: 100%;
+    
 }
 
 
@@ -290,6 +189,7 @@ button:focus {
     display: block;
 
 }
+
 
 
 #dialog-content {
@@ -359,6 +259,9 @@ dialog::backdrop {
     margin: 0;
     width: 300px;
     border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .foto-update {
@@ -484,3 +387,4 @@ footer img{
     height:60px;
     width: 60px;
 }
+

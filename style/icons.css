@@ -1,0 +1,108 @@
+
+.normal.type-icon {
+    background-color: #A8A878;
+    color: white;
+    background-image: url('../icons/normal.svg');
+}
+
+.fire.type-icon {
+    background-color: #F08030;
+    color: white;
+    background-image: url('../icons/fire.svg');
+}
+
+.water.type-icon {
+    background-color: #6890F0;
+    color: white;
+    background-image: url('../icons/water.svg');
+}
+
+.electric.type-icon {
+    background-color: #F8D030;
+    color: black;
+    background-image: url('../icons/fire.svg');
+}
+
+.grass.type-icon {
+    background-color: #78C850;
+    color: white;
+    background-image: url('../icons/fire.svg');
+}
+
+.ice.type-icon {
+    background-color: #98D8D8;
+    color: black;
+    background-image: url('../icons/fire.svg');
+}
+
+.fighting.type-icon {
+    background-color: #C03028;
+    color: white;
+    background-image: url('../icons/fighting.svg');
+}
+
+.poison.type-icon {
+    background-color: #A040A0;
+    color: white;
+    background-image: url('../icons/poison.svg');
+}
+
+.ground.type-icon {
+    background-color: #E0C068;
+    color: black;
+    background-image: url('../icons/ground.svg');
+}
+
+.flying.type-icon {
+    background-color: #A890F0;
+    color: white;
+    background-image: url('../icons/flying.svg');
+}
+
+.psychic.type-icon {
+    background-color: #F85888;
+    color: white;
+    background-image: url('../icons/psychic.svg');
+}
+
+.bug.type-icon {
+    background-color: #A8B820;
+    color: white;
+    background-image: url('../icons/bug.svg');
+}
+
+.rock.type-icon {
+    background-color: #B8A038;
+    color: white;
+    background-image: url('../icons/rock.svg');
+}
+
+.ghost.type-icon {
+    background-color: #705898;
+    color: white;
+    background-image: url('../icons/ghost.svg');
+}
+
+.dragon.type-icon {
+    background-color: #7038F8;
+    color: white;
+    background-image: url('../icons/dragon.svg');
+}
+
+.dark.type-icon {
+    background-color: #705848;
+    color: white;
+    background-image: url('../icons/dark.svg');
+}
+
+.steel.type-icon {
+    background-color: #B8B8D0;
+    color: black;
+    background-image: url('../icons/steel.svg');
+}
+
+.fairy.type-icon {
+    background-color: #EE99AC;
+    color: black;
+    background-image: url('../icons/fairy.svg');
+}
