@@ -2,12 +2,18 @@ function pokemonCardTemplate(details, typeIcons) {
   const primaryType = details.types[0].type.name;
   const imgUrl = details.sprites.other["official-artwork"].front_default;
   return `
-    <div class="pokemon-card ${primaryType}">
+    <div class="pokemon-card ${primaryType}" onclick='openDialog(${JSON.stringify(details)})'>
       <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
-      <div class="dialog-foto-container"><img src="${imgUrl}" class="dialog-foto ${primaryType}" alt="${details.name}" onclick='openDialog(${JSON.stringify(details)})'></div>
+      
+      <!-- Typ-Klasse hierhin verschieben -->
+      <div class="dialog-foto-container ${primaryType}">
+        <img src="${imgUrl}" class="dialog-foto" alt="${details.name}">
+      </div>
+
       <div class="type-icon-container">${typeIcons}</div>
     </div>`;
 }
+
 
 function dialogTemplate(details, typeIcons, stats) {
   const pType = details.types[0].type.name;
