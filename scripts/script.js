@@ -1,4 +1,5 @@
 async function loadPokemons() {
+  showSpinner();
   const container = document.getElementById("pokemon-container");
   const data = await (await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')).json();
 
@@ -7,6 +8,7 @@ async function loadPokemons() {
     const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
     container.innerHTML += pokemonCardTemplate(details, typeIcons);
   }
+  hideSpinner();
 }
 
 
@@ -108,6 +110,16 @@ async function searchPokemon() {
 
     container.innerHTML += pokemonCardTemplate(details, typeIcons);
   }
+}
+
+function showSpinner() {
+  document.getElementById("spinner").style.display = "block";
+  document.getElementById("pokemon-container").classList.add("hidden");
+}
+
+function hideSpinner() {
+  document.getElementById("spinner").style.display = "none";
+  document.getElementById("pokemon-container").classList.remove("hidden");
 }
 
 

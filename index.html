@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/template.js"></script>
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/assets.css">
-    <link rel="stylesheet" href="./style/fonts.css">
-    <link rel="stylesheet" href="./style/standard.css">
-    <link rel="stylesheet" href="./style/icons.css">
-    
-    <link rel="icon" href="./icons/pokeball.png">
-    
-</head>
-   
-<body onload="init()">
+
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/assets.css" />
+    <link rel="stylesheet" href="./style/fonts.css" />
+    <link rel="stylesheet" href="./style/standard.css" />
+    <link rel="stylesheet" href="./style/icons.css" />
+
+    <link rel="icon" href="./icons/pokeball.png" />
+  </head>
+
+  <body onload="init()">
     <header>
-        <div class="header-title"><h1>Pokémon Liste</h1></div>
-        <div class="header-search">
-            <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="searchPokemon()" />
-        </div>
-        
+      <div class="header-title"><h1>Pokémon Liste</h1></div>
+      <div class="header-search">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search Pokémon..."
+          oninput="searchPokemon()"
+        />
+      </div>
     </header>
-    
+
+    <div id="spinner" style="display: none">
+      <div class="spinner-circle"></div>
+      <p>Loading...</p>
+    </div>
+
     <div id="pokemon-container" class="pokemon-container"></div>
-    
 
     <dialog id="pokemon-dialog">
-    <div id="dialog-content"></div>
+      <div id="dialog-content"></div>
     </dialog>
 
     <footer>
-        <div>
-            <img src="./icons/pokeball.png" alt="">
-        </div>
-        <div>
-            <h3>Developer Akademie</h3>
-        </div>
+      <div>
+        <img src="./icons/pokeball.png" alt="" />
+      </div>
+      <div>
+        <h3>Developer Akademie</h3>
+      </div>
     </footer>
-   
-</body>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/template.js"></script>
+  </body>
 </html>
