@@ -18,6 +18,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 120px;
 }
 
 #pokemon-container.hidden {
@@ -193,6 +194,7 @@ button:focus {
   border-radius: 8px;         
   overflow: visible;          
 }
+
 
 
 
@@ -409,4 +411,49 @@ footer img{
     height:60px;
     width: 60px;
 }
+header img{
+    height:60px;
+    width: 60px;
+}
+.header-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
 
+@media(max-width:580px){
+       header{
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+@media(max-width:500px){
+    header{
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #dialog-content{
+        width: 250px; 
+    }
+
+    .evo-image {
+    width: 54px;
+    }
+
+    .card-update {
+    width: 250px;
+    }
+    h1{
+    font-size: 20px;        
+    }
+
+    header img {
+    height: 40px;
+    width: 40px;
+}
+}

@@ -36,3 +36,26 @@ h1, h2, h3, p {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.change-button{
+  margin-top: -40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.change-button img{
+  height: 30px;
+  width: 30px;
+  
+  
+}
+
+.change-button button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+}
+

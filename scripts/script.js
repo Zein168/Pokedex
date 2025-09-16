@@ -13,8 +13,10 @@ async function loadPokemons() {
 
 
 function openDialog(details) {
+  currentIndex = allPokemon.findIndex(p => p.name === details.name);
   const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
-  const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span><div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat,100)}%"></div></div></li>`).join("");
+  const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span>
+    <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat,100)}%"></div></div></li>`).join("");
   
   document.getElementById("dialog-content").innerHTML = dialogTemplate(details, typeIcons, stats);
   document.getElementById("pokemon-dialog").showModal();
@@ -121,6 +123,24 @@ function hideSpinner() {
   document.getElementById("spinner").style.display = "none";
   document.getElementById("pokemon-container").classList.remove("hidden");
 }
+
+async function changePoke(direction) {
+  currentIndex += direction;
+
+  if (currentIndex < 0) currentIndex = allPokemon.length - 1;
+  if (currentIndex >= allPokemon.length) currentIndex = 0;
+
+  const details = await (await fetch(allPokemon[currentIndex].url)).json();
+  const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
+   const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span>
+    <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat,100)}%"></div></div></li>`).join("");
+  
+  document.getElementById("dialog-content").innerHTML = dialogTemplate(details, typeIcons, stats);
+
+
+  loadEvolutionChain(details);
+}
+
 
 
 loadAllPokemon();
