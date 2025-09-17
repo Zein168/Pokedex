@@ -1,9 +1,10 @@
 function pokemonCardTemplate(details, typeIcons) {
   const primaryType = details.types[0].type.name;
   const imgUrl = details.sprites.other["official-artwork"].front_default;
+  const name =  details.name.toUpperCase();
   return `
     <div class="pokemon-card ${primaryType}" onclick='openDialog(${JSON.stringify(details)})'>
-      <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
+      <div class="name-id"><h3>#${details.id} ${name}</h3></div>
       
       
       <div class="dialog-foto-container ${primaryType}">
@@ -19,9 +20,10 @@ function dialogTemplate(details, typeIcons, stats) {
   const pType = details.types[0].type.name;
   const img = details.sprites.other?.["official-artwork"]?.front_default;
   const ab = details.abilities.map(a => a.ability.name).join(", ");
+  const name =  details.name.toUpperCase();
 return `
   <div class="card-update">
-    <div class="name-id"><h3>#${details.id} ${details.name}</h3></div>
+    <div class="name-id"><h3>#${details.id} ${name}</h3></div>
     <div class="dialog-foto-container ${pType}">
       <img class="dialog-foto ${pType}" src="${img}" alt="${details.name}" />
     </div>

@@ -1,14 +1,26 @@
+let offset = 0;   
+const limit = 20;
+
 async function loadPokemons() {
+    const btn = document.getElementById("loadMoreBtn");
+  btn.disabled = true; 
   showSpinner();
   const container = document.getElementById("pokemon-container");
-  const data = await (await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')).json();
+
+  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+  const data = await (await fetch(url)).json();
 
   for (const item of data.results) {
     const details = await (await fetch(item.url)).json();
-    const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
+    const typeIcons = details.types
+      .map(t => `<div class="type-icon ${t.type.name}"></div>`)
+      .join("");
     container.innerHTML += pokemonCardTemplate(details, typeIcons);
   }
+
+  offset += limit; 
   hideSpinner();
+  btn.disabled = false;
 }
 
 

@@ -6,6 +6,7 @@ body{
     border-radius: 8px;
     text-align: center;
     width: 170px;
+    height: 250px;
     margin: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -18,7 +19,6 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 120px;
 }
 
 #pokemon-container.hidden {
@@ -393,18 +393,19 @@ header{
   border: none;
 }
 
-footer{
-    height: 100px;
-    width: 100%;   
-    background-color: #244d69;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 10; 
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: #244d69;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;  
 }
 
 footer img{ 
