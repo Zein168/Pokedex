@@ -13,12 +13,12 @@ body{
     background-color: #244d69;
 }
 
-
-
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1440px;
+    margin: 0 auto;     
 }
 
 #pokemon-container.hidden {
@@ -59,14 +59,12 @@ body{
     background-color: #98D8D8;
     color: black;
     width: 100%;
-    
 }
 
 .fighting.dialog-foto-container  {
     background-color: #C03028;
     color: white;
     width: 100%;
-    
 }
 
 .poison.dialog-foto-container  {
@@ -80,28 +78,24 @@ body{
     background-color: #E0C068;
     color: black;
     width: 100%;
-    
 }
 
 .flying.dialog-foto-container  {
     background-color: #A890F0;
     color: white;
     width: 100%;
-    
 }
 
 .psychic.dialog-foto-container  {
     background-color: #F85888;
     color: white;
     width: 100%;
-    
 }
 
 .bug.dialog-foto-container  {
     background-color: #A8B820;
     color: white;
     width: 100%;
-    
 }
 
 .rock.dialog-foto-container  {
@@ -120,7 +114,6 @@ body{
     background-color: #7038F8;
     color: white;
     width: 100%;
-    
 }
 
 .dark.dialog-foto-container  {
@@ -139,7 +132,6 @@ body{
     background-color: #EE99AC;
     color: black;
     width: 100%;
-    
 }
 
 
@@ -195,9 +187,6 @@ button:focus {
   overflow: visible;          
 }
 
-
-
-
 .dialog-foto {
   width: 100%;
   height: 100%;
@@ -209,7 +198,6 @@ button:focus {
   filter: drop-shadow(0 8px 8px rgba(0,0,0,0.5));
   cursor: pointer;
 }
-
 
 #dialog-content {
     width: 300px;
@@ -231,10 +219,8 @@ dialog::backdrop {
     background-color: #2E6375;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    font-size: 14px;                
-    line-height: 1.5;  
-    
-
+    font-size: 14px;                 
+    font-family: serif;
 }
 
 .stats-ul {
@@ -247,14 +233,17 @@ dialog::backdrop {
 .stat-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 6px 0;
+    gap: 16px;
+    font-size: 16px;
+    margin-top: 3px;
 }
 
 .stat-name {
     width: 120px;
     text-transform: capitalize;
     white-space: nowrap;
+    font-family: monospace;
+    color: #ffcccc;
 }
 
 .stat-bar {
@@ -271,8 +260,6 @@ dialog::backdrop {
     height: 100%;
     transition: width 0.3s ease-in-out;
 }
-
-
 
 .card-update {
     margin: 0;
@@ -300,14 +287,12 @@ dialog::backdrop {
     outline: none;
     font-weight: bold;
     position: relative;
-    
+    font-size: 16px;
+    font-family: serif;
 }
-
+    
 .tab-btn.active {
     color: white;
-   
-   
-   
 }
 
 .tab-btn.active::after {
@@ -338,24 +323,25 @@ dialog::backdrop {
     height: 20px;
 }
 
-#tab-main p{
-    display: flex;             
-    justify-content: space-between;
-    margin: 5px 0;
-
-    
-}
-
 .label {
   display: inline-block;
   width: 118px;
   font-weight: bold;
+  font-family: monospace;
   padding-left: 20px;
-  font-size: 12px; 
+  font-size: 16px; 
+  margin-top: 7px;
+  color: #ffcccc;
+  
 }
 
 .value {
   flex: 1; 
+  font-weight: bold;
+  font-family: monospace;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #ffcccc;
 }
 
 /* evo-chain */
@@ -368,15 +354,14 @@ dialog::backdrop {
 }
 
 .evo-image {
-  width: 70px;
-  height: auto;
+    width: 77px;
+    height: 80px;
 }
 
 .evo-arrow {
-  font-size: 24px;
+  font-size: 12px;
   color: white;
 }
-
 
 header{
     background-color: #244d69;
@@ -439,15 +424,16 @@ header img{
     }
 
     #dialog-content{
-        width: 250px; 
+        width: 275px; 
     }
 
     .evo-image {
-    width: 54px;
+    width: 62px;
+    height: auto;
     }
 
     .card-update {
-    width: 250px;
+    width: 275px;
     }
     h1{
     font-size: 20px;        

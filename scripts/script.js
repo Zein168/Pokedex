@@ -1,35 +1,43 @@
-let offset = 0;   
+let offset = 0;
 const limit = 20;
-
+let allPokemon = []
 async function loadPokemons() {
-    const btn = document.getElementById("loadMoreBtn");
-  btn.disabled = true; 
+  console.time("Ladezeit");
+  const btn = document.getElementById("loadMoreBtn");
+  btn.disabled = true;
   showSpinner();
   const container = document.getElementById("pokemon-container");
 
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
   const data = await (await fetch(url)).json();
 
-  for (const item of data.results) {
-    const details = await (await fetch(item.url)).json();
+  const detailsList = await Promise.all(
+    data.results.map(item => fetch(item.url).then(res => res.json()))
+  );
+
+  for (const details  of detailsList) {
+    allPokemon.push(details);
     const typeIcons = details.types
       .map(t => `<div class="type-icon ${t.type.name}"></div>`)
       .join("");
     container.innerHTML += pokemonCardTemplate(details, typeIcons);
   }
 
-  offset += limit; 
-  hideSpinner();
-  btn.disabled = false;
+    offset += limit;
+    setTimeout(() => {
+    hideSpinner();
+    btn.disabled = false;
+    console.timeEnd("Ladezeit"); 
+    console.log("Offset:", offset, "AllPokemon length:", allPokemon.length);
+  }, 1000);
 }
-
 
 function openDialog(details) {
   currentIndex = allPokemon.findIndex(p => p.name === details.name);
   const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
   const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span>
-    <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat,100)}%"></div></div></li>`).join("");
-  
+    <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat, 100)}%"></div></div></li>`).join("");
+
   document.getElementById("dialog-content").innerHTML = dialogTemplate(details, typeIcons, stats);
   document.getElementById("pokemon-dialog").showModal();
   loadEvolutionChain(details);
@@ -49,12 +57,13 @@ function showTab(tabName, button) {
 
   button.classList.add("active");
 }
+
 function setupDialogClose() {
   const dialog = document.getElementById("pokemon-dialog");
   const content = document.getElementById("dialog-content");
 
   dialog.addEventListener("click", e => {
-    if (!content.contains(e.target)) {
+    if (!content.contains(e.target) && !e.target.closest('.change-button')) {
       dialog.close();
     }
   });
@@ -73,8 +82,15 @@ async function fetchEvolutionChain(details) {
   return evoChain;
 }
 
+const evolutionCache = {};
+
 async function loadEvolutionChain(details) {
   try {
+    if (evolutionCache[details.name]) {
+      document.getElementById("evo-chain").innerHTML = evolutionCache[details.name];
+      return;
+    }
+
     const evoChain = await fetchEvolutionChain(details);
     const evoContainer = document.getElementById("evo-chain");
     evoContainer.innerHTML = "";
@@ -85,45 +101,42 @@ async function loadEvolutionChain(details) {
       const image = data.sprites.other["official-artwork"].front_default;
       evoContainer.innerHTML += evoTemplate(name, image, i === evoChain.length - 1);
     }
+
+    evolutionCache[details.name] = evoContainer.innerHTML;
+
   } catch (error) {
     console.error("Fehler beim Laden der Evolution Chain:", error);
     document.getElementById("evo-chain").textContent = "Unavailable";
   }
 }
 
-
 function init() {
   loadPokemons();
   setupDialogClose()
 }
-
-let allPokemon = [];
-
-async function loadAllPokemon() {
-  const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
-  const data = await response.json();
-  allPokemon = data.results;
-}
-
-
-
+ 
 async function searchPokemon() {
   const query = document.getElementById("searchInput").value.toLowerCase().trim();
   const container = document.getElementById("pokemon-container");
-  container.innerHTML = "";
 
-  if (!query) return loadPokemons(); 
+ let list;
+  if (query.length < 3) {
+    list = allPokemon;
+    filteredPokemon = null;
+  } else {
+    list = allPokemon.filter(p => p.name.includes(query));
+    filteredPokemon = list;
+  }
 
-  const filtered = allPokemon.filter(p => p.name.includes(query));
-
-  for (const item of filtered) {
-    const details = await (await fetch(item.url)).json();
+  let html = "";
+  list.forEach(details => {
     const typeIcons = details.types
       .map(t => `<div class="type-icon ${t.type.name}"></div>`)
       .join("");
+    html += pokemonCardTemplate(details, typeIcons);
+  });
 
-    container.innerHTML += pokemonCardTemplate(details, typeIcons);
-  }
+  container.innerHTML = html;
 }
 
 function showSpinner() {
@@ -137,22 +150,28 @@ function hideSpinner() {
 }
 
 async function changePoke(direction) {
+  const list = filteredPokemon || allPokemon;
   currentIndex += direction;
 
-  if (currentIndex < 0) currentIndex = allPokemon.length - 1;
-  if (currentIndex >= allPokemon.length) currentIndex = 0;
+  if (currentIndex < 0) currentIndex = list.length - 1;
+  if (currentIndex >= list.length) currentIndex = 0;
 
-  const details = await (await fetch(allPokemon[currentIndex].url)).json();
+  const details = list[currentIndex];
   const typeIcons = details.types.map(t => `<div class="type-icon ${t.type.name}"></div>`).join("");
-   const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span>
-    <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat,100)}%"></div></div></li>`).join("");
-  
+  const stats = details.stats.map(s => `<li class="stat-item"><span class="stat-name">${s.stat.name}</span>
+  <div class="stat-bar"><div class="stat-fill" style="width:${Math.min(s.base_stat, 100)}%"></div></div></li>`).join("");
+
   document.getElementById("dialog-content").innerHTML = dialogTemplate(details, typeIcons, stats);
 
 
-  loadEvolutionChain(details);
+  await loadEvolutionChain(details);
 }
 
+async function onLoadMore() {
+  const query = document.getElementById("searchInput").value.toLowerCase().trim();
+  await loadPokemons();
 
-
-loadAllPokemon();
+  if (query.length >= 3) {
+    searchPokemon();
+  }
+}

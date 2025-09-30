@@ -52,14 +52,12 @@ h1, h2, h3, p {
   height: 30px;
   width: 30px;
   
-  
 }
 
 .change-button button {
   background: none;
   border: none;
   cursor: pointer;
-  
 }
 
 .load-more {
@@ -67,6 +65,7 @@ h1, h2, h3, p {
   justify-content: center;
   margin: 20px 0;
 }
+
 .load-more button {
   padding: 10px 20px;
   font-size: 16px;
@@ -85,4 +84,10 @@ h1, h2, h3, p {
 #loadMoreBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.p-tag{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }

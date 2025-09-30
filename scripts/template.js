@@ -15,53 +15,60 @@ function pokemonCardTemplate(details, typeIcons) {
     </div>`;
 }
 
+function dialogHeader(details, name, pType, img) {
+  return `
+    <div class="card-update">
+      <div class="name-id"><h3>#${details.id} ${name}</h3></div>
+      <div class="dialog-foto-container ${pType}">
+        <img class="dialog-foto ${pType}" src="${img}" alt="${details.name}" />
+      </div>
+    </div>
+  `;
+}
+
+function dialogTabs(typeIcons, ab, details, stats) {
+  return `
+    <div class="type-icon-container">${typeIcons}</div>
+    <div class="information">
+      <div class="tab-buttons">
+        ${["main", "stats", "evo"].map((t,i)=>`
+          <button class="tab-btn ${i===0?"active":""}" onclick="showTab('${t}', this)">${t}</button>
+          <div class="border"></div>`).join("")}
+      </div>
+    </div>
+    <div id="tab-main" class="tab-content">
+      <p><span class="label">Height</span><span class="value">:${details.height}m</span></p>
+      <p><span class="label">Weight</span><span class="value">:${details.weight}kg</span></p>
+      <p><span class="label">Base exp</span><span class="value">:${details.base_experience}</span></p>
+      <p class="p-tag"><span class="label">Abilities</span><span class="value">:${ab}</span></p>
+    </div>
+    <div id="tab-stats" class="tab-content" style="display:none;">
+      <ul class="stats-ul">${stats}</ul>
+    </div>
+    <div id="tab-evo" class="tab-content" style="display:none;">
+      <div id="evo-chain"></div>
+    </div>
+    
+  `;
+}
+
+function dialogNavButtons() {
+  return `
+    <div class="change-button">
+      <button onclick="changePoke(-1)"><img class="change-button-img" src="./icons/left-arrow.png"></button>
+      <button onclick="changePoke(1)"><img class="change-button-img" src="./icons/right-arrow.png"></button>
+    </div>
+  `;
+}
 
 function dialogTemplate(details, typeIcons, stats) {
   const pType = details.types[0].type.name;
   const img = details.sprites.other?.["official-artwork"]?.front_default;
   const ab = details.abilities.map(a => a.ability.name).join(", ");
-  const name =  details.name.toUpperCase();
-return `
-  <div class="card-update">
-    <div class="name-id"><h3>#${details.id} ${name}</h3></div>
-    <div class="dialog-foto-container ${pType}">
-      <img class="dialog-foto ${pType}" src="${img}" alt="${details.name}" />
-    </div>
-  </div>
+  const name = details.name.toUpperCase();
 
-  <div class="type-icon-container">${typeIcons}</div>
-  <div class="information">
-    <div class="tab-buttons">
-      <button class="tab-btn active" onclick="showTab('main', this)">main</button><div class="border"></div>
-      <button class="tab-btn" onclick="showTab('stats', this)">stats</button><div class="border"></div>
-      <button class="tab-btn" onclick="showTab('evo', this)">evo-chain</button>
-    </div>
-  </div>
-  
-  <div id="tab-main" class="tab-content">
-    <p><span class="label">Height</span><span class="value">:${details.height}m</span></p>
-    <p><span class="label">Weight</span><span class="value">:${details.weight}kg</span></p>
-    <p><span class="label">Base experience</span><span class="value">:${details.base_experience}</span></p>
-    <p><span class="label">Abilities</span><span class="value">:${ab}</span></p>
-  </div>
-  
-  <div id="tab-stats" class="tab-content" style="display:none;">
-    <ul class="stats-ul">${stats}</ul>
-  </div>
-  
-  <div id="tab-evo" class="tab-content" style="display:none;">
-    <div id="evo-chain"></div>
-  </div>
-
-  <div class="change-button">
-  <button onclick="changePoke(-1)"><img class="change-button-img" src="./icons/left-arrow.png"></button>
-  <button onclick="changePoke(1)"><img src="./icons/right-arrow.png"</button>
-</div>
-
-`;
-  
+  return dialogHeader(details, name, pType, img) + dialogTabs(typeIcons, ab, details, stats) + dialogNavButtons();;
 }
-
 
 function evoTemplate(name, image, isLast) {
   return `

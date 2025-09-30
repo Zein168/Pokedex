@@ -4,13 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-
     <link rel="stylesheet" href="./style/style.css" />
-    <link rel="stylesheet" href="./style/assets.css" />
     <link rel="stylesheet" href="./style/fonts.css" />
     <link rel="stylesheet" href="./style/standard.css" />
     <link rel="stylesheet" href="./style/icons.css" />
-
     <link rel="icon" href="./icons/pokeball.png" />
   </head>
 
@@ -33,10 +30,9 @@
     </div>
    <div id="pokemon-container" class="pokemon-container"></div>
    <div class="load-more">
-      <button id="loadMoreBtn" onclick="loadPokemons()">Load more</button>
+      <button id="loadMoreBtn" onclick="onLoadMore()">Load more</button>
     </div>
-   
-    
+  
     <dialog id="pokemon-dialog">
       <div id="dialog-content"></div>
     </dialog>
